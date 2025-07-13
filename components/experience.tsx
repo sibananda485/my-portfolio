@@ -31,7 +31,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Work</span>{" "}
@@ -46,7 +46,7 @@ export default function Experience() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500 transform md:-translate-x-1/2" />
+          <div className="absolute left-2 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -58,14 +58,14 @@ export default function Experience() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[1.57rem] md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10">
+                <div className="absolute left-[1.1px] md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10">
                   {exp.current && (
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full animate-ping" />
                   )}
                 </div>
 
-                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} ml-16 md:ml-0`}>
-                  <div className="group p-8 bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1">
+                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} ml-5 md:ml-0`}>
+                  <div className="group p-4 sm:p-8 bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
                         <h3 className="text-xl font-semibold text-white mb-1">{exp.title}</h3>

@@ -38,7 +38,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Let's Work</span>{" "}
