@@ -1,41 +1,52 @@
 import {
   FileText,
   Github,
+  Instagram,
   Linkedin,
   Mail,
   MapPin,
   Phone,
   PhoneCall,
 } from "lucide-react";
+import { useParams, usePathname } from "next/navigation";
+import { useNavigation } from "react-day-picker";
+
+const contactInfo = [
+  {
+    icon: <Mail className="size-5 text-orange-500" />,
+    label: "Email",
+    value: "sahsiba485@gmail.com",
+    href: "mailto:sahsiba485@gmail.com",
+  },
+  {
+    icon: <Linkedin className="size-5 text-blue-500" />,
+    label: "LinkedIn",
+    value: "linkedin.com/in/sibananda485",
+    href: "https://www.linkedin.com/in/sibananda485",
+  },
+  {
+    icon: <Github className="size-5" />,
+    label: "GitHub",
+    value: "github.com/sibananda485",
+    href: "https://www.github.com/sibananda485",
+  },
+  {
+    icon: <MapPin className="size-5  text-green-500" />,
+    label: "Location",
+    value: "Mumbai, India",
+    href: null,
+  },
+  {
+    icon: <Instagram className="size-5 text-red-500" />,
+    label: "Instagram",
+    value: "instagram.com/sibananda485",
+    href: "https://www.instagram.com/sibananda485/",
+  },
+];
 
 export default function Contact() {
-  const contactInfo = [
-    {
-      icon: <Mail className="size-5" />,
-      label: "Email",
-      value: "sahsiba485@gmail.com",
-      href: "mailto:sahsiba485@gmail.com",
-    },
-    {
-      icon: <Linkedin className="size-5" />,
-      label: "LinkedIn",
-      value: "linkedin.com/in/sibananda485",
-      href: "https://www.linkedin.com/in/sibananda485",
-    },
-    {
-      icon: <Github className="size-5" />,
-      label: "GitHub",
-      value: "github.com/sibananda485",
-      href: "https://www.github.com/sibananda485",
-    },
-    {
-      icon: <MapPin className="size-5" />,
-      label: "Location",
-      value: "Mumbai, India",
-      href: null,
-    },
-  ];
-
+  const pathName = usePathname();
+  const showResume = pathName == "/recruiter";
   return (
     <section id="contact" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-2">
@@ -77,6 +88,12 @@ export default function Contact() {
                   </a>
 
                   <a
+                    onClick={(e) => {
+                      if (!showResume) {
+                        e.preventDefault();
+                        alert("INFO : Only recruiters can access resume");
+                      }
+                    }}
                     href="https://entryedge.s3.ap-south-1.amazonaws.com/12-1745606889206-sibaResumeUpdated.pdf"
                     target="_blank"
                     download
