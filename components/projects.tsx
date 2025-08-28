@@ -18,7 +18,7 @@ export default function Projects() {
         "Socket.io",
         "AWS S3",
       ],
-      liveDemo: null,
+      liveDemo: "https://entryedge.vercel.app/",
       github: "https://github.com/sibananda485/entryedge.git",
       featured: true,
     },

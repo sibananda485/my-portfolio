@@ -94,7 +94,7 @@ export default function Contact() {
                         alert("INFO : Only recruiters can access resume");
                       }
                     }}
-                    href="https://entryedge.s3.ap-south-1.amazonaws.com/12-1745606889206-sibaResumeUpdated.pdf"
+                    href="https://entryedge.s3.ap-south-1.amazonaws.com/12-1756397074529-sibaResume_v9.pdf"
                     target="_blank"
                     download
                     rel="noopener noreferrer"
