@@ -10,6 +10,7 @@ import Projects from "@/components/projects"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import ScrollProgress from "@/components/scroll-progress"
+import OpenSource from "@/components/opensource"
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -85,6 +86,7 @@ export default function Home() {
       <About />
       <Skills />
       <Experience />
+      <OpenSource />
       <Projects />
       <Contact />
       <Footer />
