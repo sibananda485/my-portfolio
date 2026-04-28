@@ -5,12 +5,11 @@ const inter = Inter({ subsets: ["latin"] });
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SIBANANDA SAHU - Professional Portfolio",
-  description: "Built with passion and modern web technologies.",
+  title: "Sibananda Sahu — Frontend Developer",
+  description:
+    "Software Developer with 2.5+ years of experience building scalable React & TypeScript applications. Open source contributor to MUI-X.",
   icons: {
-    icon: "favicon.png",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.svg",
   },
 };
 

@@ -1,28 +1,53 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { FileText } from "lucide-react";
+
+const stats = [
+  { value: "2.5+", label: "Years Experience" },
+  { value: "10+", label: "B2B Apps Delivered" },
+  { value: "MUI-X", label: "OSS Contributor" },
+];
 
 export default function Hero() {
   const textRef = useRef<HTMLSpanElement>(null);
+  const pathName = usePathname();
+  const showResume = pathName === "/recruiter";
 
-  // useEffect(() => {
-  //   const text = "Fullstack Developer"
-  //   const element = textRef.current
-  //   if (!element) return
+  useEffect(() => {
+    const roles = ["Frontend Developer", "React Specialist", "OSS Contributor"];
+    const element = textRef.current;
+    if (!element) return;
 
-  //   let index = 0
-  //   element.textContent = ""
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-  //   const typeWriter = () => {
-  //     if (index < text.length) {
-  //       element.textContent += text.charAt(index)
-  //       index++
-  //       setTimeout(typeWriter, 100)
-  //     }
-  //   }
+    const tick = () => {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        element.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, 1800);
+          return;
+        }
+      } else {
+        element.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      setTimeout(tick, deleting ? 60 : 100);
+    };
 
-  //   setTimeout(typeWriter, 1000)
-  // }, [])
+    const timeout = setTimeout(tick, 800);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <section
@@ -32,7 +57,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 py-20 text-center">
         <div className="animate-slide-up">
           <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-primary-400 text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-primary-400 text-sm font-medium">
               👋 Welcome to my portfolio
             </span>
           </div>
@@ -44,17 +69,27 @@ export default function Hero() {
             </span>
           </h1>
 
-          <div className="text-xl md:text-2xl text-neutral-300 mb-8 h-8">
-            <span ref={textRef} className=" pr-1">
-              Fullstack Developer
-            </span>
+          <div className="text-xl md:text-2xl text-neutral-300 mb-4 h-8">
+            <span ref={textRef} className="border-r-2 border-primary-400 pr-1" />
           </div>
 
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Software Developer with 2.5+ years of experience building clean,
-            scalable frontend applications using React, TypeScript, and Tailwind.
-            Open source contributor to MUI-X — shipped a fix in v8.28.2.
+          <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Software Developer with <span className="text-white font-medium">2.5+ years</span> of experience
+            building clean, scalable frontend applications using React, TypeScript, and Tailwind.
+            Open source contributor to <span className="text-primary-400 font-medium">MUI-X</span> — fix shipped in v8.28.2.
           </p>
+
+          {/* Stats row */}
+          <div className="flex flex-wrap justify-center gap-8 mb-12">
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center">
+                <p className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                  {stat.value}
+                </p>
+                <p className="text-neutral-500 text-sm mt-0.5">{stat.label}</p>
+              </div>
+            ))}
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
@@ -63,6 +98,22 @@ export default function Hero() {
             >
               <span className="relative z-10">View My Work</span>
               <div className="absolute inset-0 bg-gradient-to-r from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </a>
+
+            <a
+              onClick={(e) => {
+                if (!showResume) {
+                  e.preventDefault();
+                  alert("INFO : Only recruiters can access resume");
+                }
+              }}
+              href="https://entryedge.s3.ap-south-1.amazonaws.com/12-1777404599030-sibaResume_v11.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-4 border-2 border-neutral-700 text-white font-semibold rounded-full hover:border-primary-500 hover:text-primary-400 transition-all duration-300"
+            >
+              <FileText className="size-4" />
+              Resume
             </a>
 
             <a

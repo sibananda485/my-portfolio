@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Projects() {
   const projects = [
     {
-      title: "Full Stack Job Portal",
+      title: "EntryEdge — Job Board Platform",
       description:
-        "A comprehensive job board application with advanced features including job listings, intelligent search, candidate profiles, resume upload, real-time chat, and a complete recruiter dashboard for job posting and management.",
+        "Full-stack job board with job listings, advanced search filters, candidate profiles, resume uploads, job comparison, and a complete recruiter dashboard. Features real-time chat and notifications via Socket.IO, with a modular architecture using Prisma ORM, React Hook Form, and Zod for robust data handling.",
       image: "/entryedge.png",
       techStack: [
         "React",
@@ -17,15 +17,16 @@ export default function Projects() {
         "Prisma ORM",
         "Socket.io",
         "AWS S3",
+        "Zod",
       ],
       liveDemo: "https://entryedge.vercel.app/",
       github: "https://github.com/sibananda485/entryedge.git",
       featured: true,
     },
     {
-      title: "Full Stack E-commerce",
+      title: "TailShop — E-commerce Platform",
       description:
-        "A feature-rich e-commerce platform with product catalog, shopping cart, user authentication, order management, payment integration, and a comprehensive admin dashboard for inventory and user management.",
+        "Feature-rich e-commerce storefront with product catalog, shopping cart, user authentication, order management, and an admin dashboard for inventory and user management. Built with a clean component architecture and integrated REST APIs for seamless data flow.",
       image: "/tailshop.png",
       techStack: [
         "React",

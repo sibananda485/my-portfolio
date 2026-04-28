@@ -1,33 +1,43 @@
 export default function Experience() {
   const experiences = [
     {
-      title: "Software Developer",
+      title: "Software Developer — Frontend",
       company: "Finseal Software Pvt Ltd",
-      duration: "JAN 2025 - Present",
-      description:
-        "Actively contributing to the end-to-end development of two core products—Sourceware (procurement platform) and PMS (Portfolio Management System)—focused on streamlining client onboarding, master data management, and day-to-day operational workflows",
-      skills: ["React", "React Flow", "Tanstack Query", "Tailwind", "Redux Toolkit", "ShadCN", "MUI"],
+      duration: "JAN 2025 – Present",
+      highlights: [
+        "Leading frontend development of Sourceware, a full procurement platform covering RFQs, bid analysis, purchase orders, invoices, approval workflows, and catalogs.",
+        "Built a custom drag-and-drop workflow/approval builder using React Flow, enabling non-technical users to design dynamic approval pipelines.",
+        "Developing scalable React + TypeScript components, integrating REST APIs, and managing complex application state with Redux Toolkit and Tanstack Query.",
+        "Enforcing clean architecture, react design patterns, and performance best practices across an enterprise-scale codebase.",
+      ],
+      skills: ["React", "TypeScript", "React Flow", "Tanstack Query", "Redux Toolkit", "Tailwind", "ShadCN", "MUI"],
       current: true,
     },
     {
-      title: "Software Developer",
+      title: "Software Developer — Frontend",
       company: "Actify Inc.",
-      duration: "MAR 2024 - JAN 2025",
-      description:
-        "Played a core role in the frontend architecture and development of multiple B2B platforms, including HRMS, CRM, Vendor Portal, Shipping App, Approval System, and LMS, using React, TypeScript, Redux Toolkit, and modular component design.",
-      skills: ["React", "ShadCN", "Tailwind", "Redux Toolkit", "Tanstack Table"],
+      duration: "MAR 2024 – DEC 2024",
+      highlights: [
+        "Architected and delivered 6+ B2B platforms: HRMS, CRM, Vendor Portal, LMS, Approval System, and Shipping Management.",
+        "Built reusable React + TypeScript component libraries and integrated APIs for seamless data flow across all platforms.",
+        "Implemented dashboards, approval flows, and reporting modules that streamlined enterprise operations for clients.",
+      ],
+      skills: ["React", "TypeScript", "ShadCN", "Tailwind", "Redux Toolkit", "Tanstack Table"],
       current: false,
     },
     {
       title: "Fullstack Engineer Intern",
       company: "Genex Co. Services",
-      duration: "JAN 2024 - MAR 2024",
-      description:
-        "Translated Figma designs into responsive UI using Next.js and Medusa.js, delivering core pages like wishlist, cart, and order. Built full-stack features in collaboration with the team, integrating Node.js backend and enhancing overall user experience and functionality",
-      skills: ["Next.js", "TypeScript", "Medusa.js", "Figma", "Stripe"],
+      duration: "JAN 2024 – MAR 2024",
+      highlights: [
+        "Built and customised a full e-commerce storefront using Medusa.js and React, covering wishlist, cart, and order pages from Figma designs.",
+        "Integrated product, cart, and order management APIs; implemented Stripe payment flow.",
+        "Collaborated with the backend team on Node.js integrations, ensuring responsive and scalable UI delivery.",
+      ],
+      skills: ["Next.js", "TypeScript", "Medusa.js", "Node.js", "Stripe", "Figma"],
       current: false,
     },
-  ]
+  ];
 
   return (
     <section id="experience" className="py-20 relative">
@@ -52,13 +62,13 @@ export default function Experience() {
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`animate-on-scroll opacity-0 relative flex items-center ${
+                className={`animate-on-scroll opacity-0 relative flex items-start ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[1.1px] md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10">
+                <div className="absolute left-[1.1px] md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10 mt-10">
                   {exp.current && (
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full animate-ping" />
                   )}
@@ -79,7 +89,14 @@ export default function Experience() {
                       </div>
                     </div>
 
-                    <p className="text-neutral-300 leading-relaxed mb-6">{exp.description}</p>
+                    <ul className="space-y-2 mb-6">
+                      {exp.highlights.map((point, i) => (
+                        <li key={i} className="flex items-start gap-2 text-neutral-300 leading-relaxed text-sm">
+                          <span className="mt-1.5 size-1.5 rounded-full bg-primary-400 shrink-0" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
 
                     <div className="flex flex-wrap gap-2">
                       {exp.skills.map((skill, skillIndex) => (
@@ -99,5 +116,5 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
+  );
 }

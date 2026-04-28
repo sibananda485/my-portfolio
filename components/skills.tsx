@@ -28,6 +28,12 @@ export default function Skills() {
       skills: ["Git", "GitHub", "AWS IAM", "AWS EC2", "AWS S3"],
       color: "from-purple-500 to-pink-500",
     },
+    {
+      title: "Tools & Practices",
+      icon: "🛠️",
+      skills: ["React Hook Form", "Zod", "Figma", "Stripe", "Medusa.js", "React Design Patterns", "REST APIs", "Modular Architecture"],
+      color: "from-orange-500 to-yellow-500",
+    },
   ]
 
   return (
@@ -45,7 +51,7 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => (
             <div
               key={index}

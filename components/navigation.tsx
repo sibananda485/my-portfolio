@@ -45,11 +45,10 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a
-            href="#home"
-            className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent"
-          >
-            SIBA
+          <a href="#home" className="group flex items-center gap-0.5 font-mono text-sm font-semibold">
+            <span className="text-accent-400 group-hover:text-accent-300 transition-colors duration-300">&lt;</span>
+            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent text-base font-black tracking-wide">SIBA</span>
+            <span className="text-accent-400 group-hover:text-accent-300 transition-colors duration-300"> /&gt;</span>
           </a>
 
           <div className="hidden md:flex items-center space-x-8">
