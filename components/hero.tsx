@@ -51,9 +51,9 @@ export default function Hero() {
           </div>
 
           <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Crafting digital experiences with modern technologies. I build
-            scalable web applications that combine beautiful design with
-            powerful functionality.
+            Software Developer with 2.5+ years of experience building clean,
+            scalable frontend applications using React, TypeScript, and Tailwind.
+            Open source contributor to MUI-X — shipped a fix in v8.28.2.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

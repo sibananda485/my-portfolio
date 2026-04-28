@@ -7,6 +7,7 @@ import About from "@/components/about"
 import Skills from "@/components/skills"
 import Experience from "@/components/experience"
 import Projects from "@/components/projects"
+import OpenSource from "@/components/opensource"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import ScrollProgress from "@/components/scroll-progress"
@@ -85,6 +86,7 @@ export default function Home() {
       <About />
       <Skills />
       <Experience />
+      <OpenSource />
       <Projects />
       <Contact />
       <Footer />

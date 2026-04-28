@@ -17,7 +17,7 @@ export default function About() {
                 <div className="w bg-neutral-800 rounded-2xl flex items-center justify-center text-6xl">
                   👨‍💻
                   <Image
-                    src={"/myimage.png"}
+                    src={"/myImage.jpg"}
                     alt={"Sibananda"}
                     fill
                     className="object-cover object-center group-hover:scale-110 transition-transform duration-500 rounded-3xl opacity-"
@@ -35,20 +35,21 @@ export default function About() {
             </h2>
             <div className="space-y-6 text-neutral-300 leading-relaxed">
               <p>
-                I'm a passionate fullstack developer with expertise in modern
-                web technologies. I love creating digital solutions that make a
-                real impact and provide exceptional user experiences.
+                Software Developer with <span className="text-white font-semibold">2.5+ years of experience</span> specialising in
+                frontend development with React, TypeScript, and Tailwind CSS. I build
+                clean, scalable, high-quality applications and love learning through
+                documentation.
               </p>
               <p>
-                With experience across the entire development stack, I
-                specialize in React, Next.js, Node.js, and cloud technologies.
-                I'm always eager to learn new technologies and take on
-                challenging projects.
+                Currently at <span className="text-primary-400 font-medium">Finseal Software</span>, I'm building a full procurement
+                platform end-to-end — including a custom drag-and-drop workflow builder
+                with React Flow — and previously delivered multiple B2B platforms at
+                Actify Inc (HRMS, CRM, LMS, Vendor Portal and more).
               </p>
               <p>
-                When I'm not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
+                I'm also an <span className="text-accent-400 font-medium">open source contributor</span> — I fixed a clipboard paste
+                bug in MUI Data Grid Premium that was merged and shipped in the official
+                v8.28.2 release, with a shoutout in the release notes.
               </p>
             </div>
 
@@ -57,10 +58,10 @@ export default function About() {
                 <MapPin className="size-4 me-1" /> Mumbai, India
               </div>
               <div className="px-4 py-2 bg-neutral-800 rounded-full text-sm flex items-center">
-                <Laptop className="size-4 me-1" /> Available for work
+                <Laptop className="size-4 me-1" /> 2.5+ Years Experience
               </div>
               <div className="px-4 py-2 bg-neutral-800 rounded-full text-sm flex items-center">
-                <Brain className="size-4 me-1" /> Experienced & Skilled
+                <Brain className="size-4 me-1" /> Open Source Contributor
               </div>
             </div>
           </div>
