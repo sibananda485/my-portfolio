@@ -31,7 +31,7 @@ export default function Skills() {
     {
       title: "Tools & Practices",
       icon: "🛠️",
-      skills: ["React Hook Form", "Zod", "Figma", "Stripe", "Medusa.js", "React Design Patterns", "REST APIs", "Modular Architecture"],
+      skills: ["React Hook Form", "Figma", "Stripe", "Medusa.js", "React Design Patterns", "Modular Architecture"],
       color: "from-orange-500 to-yellow-500",
     },
   ]

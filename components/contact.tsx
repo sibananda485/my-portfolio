@@ -1,19 +1,13 @@
-import {
-  FileText,
-  Mail,
-  MapPin,
-  Phone,
-  PhoneCall,
-} from "lucide-react";
+import { FileText, Mail, MapPin, PhoneCall } from "lucide-react";
 import { Github, Instagram, Linkedin } from "@/components/brand-icons";
-import { useParams, usePathname } from "next/navigation";
+import ResumeButton from "@/components/resume-button";
 
 const contactInfo = [
   {
     icon: <Mail className="size-5 text-orange-500" />,
     label: "Email",
-    value: "sahsiba485@gmail.com",
-    href: "mailto:sahsiba485@gmail.com",
+    value: "sahusiba485@gmail.com",
+    href: "mailto:sahusiba485@gmail.com",
   },
   {
     icon: <Linkedin className="size-5 text-blue-500" />,
@@ -41,9 +35,7 @@ const contactInfo = [
   },
 ];
 
-export default function Contact() {
-  const pathName = usePathname();
-  const showResume = pathName == "/recruiter";
+export default function Contact({ resumeUrl }: { resumeUrl?: string }) {
   return (
     <section id="contact" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-2">
@@ -84,24 +76,15 @@ export default function Contact() {
                     <span>+91 8433980976</span>
                   </a>
 
-                  <a
-                    onClick={(e) => {
-                      if (!showResume) {
-                        e.preventDefault();
-                        alert("INFO : Only recruiters can access resume");
-                      }
-                    }}
-                    href="https://entryedge.s3.ap-south-1.amazonaws.com/12-1777404599030-sibaResume_v11.pdf"
-                    target="_blank"
-                    download
-                    rel="noopener noreferrer"
+                  <ResumeButton
+                    resumeUrl={resumeUrl}
                     className="flex items-center justify-center gap-3 px-6 py-4 border-2 border-neutral-700 text-white font-semibold rounded-full hover:border-primary-500 hover:text-primary-400 transition-all duration-300"
                   >
                     <span>
                       <FileText />
                     </span>
                     <span>Download Resume</span>
-                  </a>
+                  </ResumeButton>
                 </div>
               </div>
 

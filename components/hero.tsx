@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
 import { FileText } from "lucide-react";
+import ResumeButton from "@/components/resume-button";
 
 const stats = [
   { value: "2.5+", label: "Years Experience" },
@@ -10,10 +10,8 @@ const stats = [
   { value: "MUI-X", label: "OSS Contributor" },
 ];
 
-export default function Hero() {
+export default function Hero({ resumeUrl }: { resumeUrl?: string }) {
   const textRef = useRef<HTMLSpanElement>(null);
-  const pathName = usePathname();
-  const showResume = pathName === "/recruiter";
 
   useEffect(() => {
     const roles = ["Frontend Developer", "React Specialist", "OSS Contributor"];
@@ -23,6 +21,7 @@ export default function Hero() {
     let roleIndex = 0;
     let charIndex = 0;
     let deleting = false;
+    let timeout: ReturnType<typeof setTimeout>;
 
     const tick = () => {
       const current = roles[roleIndex];
@@ -31,7 +30,7 @@ export default function Hero() {
         charIndex++;
         if (charIndex === current.length) {
           deleting = true;
-          setTimeout(tick, 1800);
+          timeout = setTimeout(tick, 1800);
           return;
         }
       } else {
@@ -42,10 +41,10 @@ export default function Hero() {
           roleIndex = (roleIndex + 1) % roles.length;
         }
       }
-      setTimeout(tick, deleting ? 60 : 100);
+      timeout = setTimeout(tick, deleting ? 60 : 100);
     };
 
-    const timeout = setTimeout(tick, 800);
+    timeout = setTimeout(tick, 800);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -100,21 +99,13 @@ export default function Hero() {
               <div className="absolute inset-0 bg-linear-to-r from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
 
-            <a
-              onClick={(e) => {
-                if (!showResume) {
-                  e.preventDefault();
-                  alert("INFO : Only recruiters can access resume");
-                }
-              }}
-              href="https://entryedge.s3.ap-south-1.amazonaws.com/12-1777404599030-sibaResume_v11.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ResumeButton
+              resumeUrl={resumeUrl}
               className="flex items-center gap-2 px-8 py-4 border-2 border-neutral-700 text-white font-semibold rounded-full hover:border-primary-500 hover:text-primary-400 transition-all duration-300"
             >
               <FileText className="size-4" />
               Resume
-            </a>
+            </ResumeButton>
 
             <a
               href="#contact"
