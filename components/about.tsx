@@ -8,21 +8,18 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-on-scroll opacity-0 relative">
             <div className="relative">
-              <div className="w- h-80 mx-auto bg-linear-to-br from-primary-500/20 to-accent-500/20 rounded-3xl rotate-6 animate-float" />
+              <div className="w-full h-80 mx-auto bg-linear-to-br from-primary-500/20 to-accent-500/20 rounded-3xl rotate-6 animate-float" />
               <div
                 className="absolute inset-0 h-80 mx-auto bg-linear-to-br from-accent-500/20 to-primary-500/20 rounded-3xl -rotate-6 animate-float"
                 style={{ animationDelay: "1s" }}
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w bg-neutral-800 rounded-2xl flex items-center justify-center text-6xl">
-                  👨‍💻
-                  <Image
-                    src={"/myImage.jpg"}
-                    alt={"Sibananda"}
-                    fill
-                    className="object-cover object-center group-hover:scale-110 transition-transform duration-500 rounded-3xl opacity-"
-                  />
-                </div>
+              <div className="absolute inset-0 bg-neutral-800 rounded-3xl">
+                <Image
+                  src={"/myImage.jpg"}
+                  alt={"Sibananda"}
+                  fill
+                  className="object-cover object-center rounded-3xl"
+                />
               </div>
             </div>
           </div>
