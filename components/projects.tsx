@@ -49,7 +49,7 @@ export default function Projects() {
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Featured</span>{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
@@ -68,7 +68,7 @@ export default function Projects() {
             >
               {project.featured && (
                 <div className="absolute top-4 left-4 z-20">
-                  <span className="px-3 py-1 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-xs font-medium rounded-full">
+                  <span className="px-3 py-1 bg-linear-to-r from-primary-500 to-accent-500 text-white text-xs font-medium rounded-full">
                     Featured
                   </span>
                 </div>
@@ -81,7 +81,7 @@ export default function Projects() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-transparent to-transparent" />
               </div>
 
               <div className="p-8">
@@ -109,7 +109,7 @@ export default function Projects() {
                       href={project.liveDemo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+                      className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-primary-500 to-accent-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
                     >
                       <div className="mx-auto flex items-center gap-1 text-center">
                         <span>Live Demo</span>

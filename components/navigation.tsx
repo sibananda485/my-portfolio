@@ -47,7 +47,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <a href="#home" className="group flex items-center gap-0.5 font-mono text-sm font-semibold">
             <span className="text-accent-400 group-hover:text-accent-300 transition-colors duration-300">&lt;</span>
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent text-base font-black tracking-wide">SIBA</span>
+            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent text-base font-black tracking-wide">SIBA</span>
             <span className="text-accent-400 group-hover:text-accent-300 transition-colors duration-300"> /&gt;</span>
           </a>
 
@@ -62,7 +62,7 @@ export default function Navigation() {
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary-400 to-accent-400" />
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r from-primary-400 to-accent-400" />
                 )}
               </a>
             ))}
@@ -70,7 +70,7 @@ export default function Navigation() {
 
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center px-6 py-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+            className="hidden md:inline-flex items-center px-6 py-2 bg-linear-to-r from-primary-500 to-accent-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
           >
             Get In Touch
           </a>

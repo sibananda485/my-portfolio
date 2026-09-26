@@ -41,7 +41,7 @@ export default function OpenSource() {
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Open Source</span>{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
               Contributions
             </span>
           </h2>
@@ -59,7 +59,7 @@ export default function OpenSource() {
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Glow accent */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               {/* Top row */}
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
@@ -78,7 +78,7 @@ export default function OpenSource() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-xs font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-linear-to-r from-primary-500 to-accent-500 text-white text-xs font-semibold rounded-full">
                     {item.badge}
                   </span>
                   <span className="px-3 py-1 bg-green-500/15 text-green-400 text-xs font-medium rounded-full border border-green-500/20">

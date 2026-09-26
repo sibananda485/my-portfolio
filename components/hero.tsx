@@ -64,7 +64,7 @@ export default function Hero() {
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="block text-white">Hi, I'm</span>
-            <span className="block bg-gradient-to-r from-primary-400 via-accent-400 to-primary-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+            <span className="block bg-linear-to-r from-primary-400 via-accent-400 to-primary-600 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
               SIBANANDA SAHU
             </span>
           </h1>
@@ -83,7 +83,7 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center gap-8 mb-12">
             {stats.map((stat, i) => (
               <div key={i} className="text-center">
-                <p className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                <p className="text-2xl font-bold bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
                   {stat.value}
                 </p>
                 <p className="text-neutral-500 text-sm mt-0.5">{stat.label}</p>
@@ -94,10 +94,10 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#experience"
-              className="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/25 hover:-translate-y-1"
+              className="group relative px-8 py-4 bg-linear-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/25 hover:-translate-y-1"
             >
               <span className="relative z-10">View My Work</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-linear-to-r from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
 
             <a

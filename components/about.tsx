@@ -8,9 +8,9 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-on-scroll opacity-0 relative">
             <div className="relative">
-              <div className="w- h-80 mx-auto bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-3xl rotate-6 animate-float" />
+              <div className="w- h-80 mx-auto bg-linear-to-br from-primary-500/20 to-accent-500/20 rounded-3xl rotate-6 animate-float" />
               <div
-                className="absolute inset-0 h-80 mx-auto bg-gradient-to-br from-accent-500/20 to-primary-500/20 rounded-3xl -rotate-6 animate-float"
+                className="absolute inset-0 h-80 mx-auto bg-linear-to-br from-accent-500/20 to-primary-500/20 rounded-3xl -rotate-6 animate-float"
                 style={{ animationDelay: "1s" }}
               />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -29,7 +29,7 @@ export default function About() {
           <div className="animate-on-scroll opacity-0">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-white">About</span>{" "}
-              <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
                 Me
               </span>
             </h2>

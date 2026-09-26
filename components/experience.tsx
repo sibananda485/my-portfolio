@@ -45,7 +45,7 @@ export default function Experience() {
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Work</span>{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
@@ -56,7 +56,7 @@ export default function Experience() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-2 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500 transform md:-translate-x-1/2" />
+          <div className="absolute left-2 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary-500 to-accent-500 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -68,9 +68,9 @@ export default function Experience() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[1.1px] md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10 mt-10">
+                <div className="absolute left-[1.1px] md:left-1/2 w-4 h-4 bg-linear-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10 mt-10">
                   {exp.current && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full animate-ping" />
+                    <div className="absolute inset-0 bg-linear-to-r from-primary-500 to-accent-500 rounded-full animate-ping" />
                   )}
                 </div>
 

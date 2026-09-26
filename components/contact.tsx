@@ -1,13 +1,11 @@
 import {
   FileText,
-  Github,
-  Instagram,
-  Linkedin,
   Mail,
   MapPin,
   Phone,
   PhoneCall,
 } from "lucide-react";
+import { Github, Instagram, Linkedin } from "@/components/brand-icons";
 import { useParams, usePathname } from "next/navigation";
 
 const contactInfo = [
@@ -52,7 +50,7 @@ export default function Contact() {
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Let's Work</span>{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
               Together
             </span>
           </h2>
@@ -78,7 +76,7 @@ export default function Contact() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <a
                     href="tel:+918433980976"
-                    className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+                    className="flex items-center justify-center gap-3 px-6 py-4 bg-linear-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
                   >
                     <span>
                       <PhoneCall />

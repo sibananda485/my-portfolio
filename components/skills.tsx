@@ -42,7 +42,7 @@ export default function Skills() {
         <div className="text-center mb-16 animate-on-scroll opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Technical</span>{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
               Skills
             </span>
           </h2>
@@ -59,7 +59,7 @@ export default function Skills() {
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}
+                className={`absolute inset-0 bg-linear-to-br ${category.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}
               />
 
               <div className="relative z-10">
