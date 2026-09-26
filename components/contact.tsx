@@ -9,7 +9,6 @@ import {
   PhoneCall,
 } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
-import { useNavigation } from "react-day-picker";
 
 const contactInfo = [
   {
