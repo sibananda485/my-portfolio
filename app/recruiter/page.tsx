@@ -1,6 +1,12 @@
+import type { Metadata } from "next"
 import Portfolio from "@/components/portfolio"
-import { RESUME_URL } from "@/lib/resume"
+import { recruiter } from "@/lib/recruiter"
+
+// Shared privately with recruiters; keep it out of search results.
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
 
 export default function RecruiterPage() {
-  return <Portfolio resumeUrl={RESUME_URL} />
+  return <Portfolio recruiter={recruiter} />
 }

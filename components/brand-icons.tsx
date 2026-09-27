@@ -1,4 +1,5 @@
 import type { SVGProps } from "react"
+import { siInstagram, siWhatsapp } from "simple-icons"
 
 // lucide-react v1 dropped brand icons; these are the lucide 0.454.0 SVGs
 // (ISC license) with lucide's default attributes.
@@ -41,12 +42,20 @@ export function Linkedin(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+// Filled logo from simple-icons (lucide never had a WhatsApp icon)
+export function Whatsapp(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d={siWhatsapp.path} />
+    </svg>
+  )
+}
+
+// Filled logo from simple-icons (lucide v1 has no brand icons)
 export function Instagram(props: SVGProps<SVGSVGElement>) {
   return (
-    <BrandIcon {...props}>
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </BrandIcon>
+    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d={siInstagram.path} />
+    </svg>
   )
 }

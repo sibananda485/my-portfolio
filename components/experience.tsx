@@ -1,120 +1,83 @@
+import { Lock } from "lucide-react"
+import Reveal from "@/components/ui/reveal"
+import SectionHeading from "@/components/ui/section-heading"
+import TracingBeam from "@/components/ui/tracing-beam"
+import { experience } from "@/lib/data"
+
 export default function Experience() {
-  const experiences = [
-    {
-      title: "Software Developer — Frontend",
-      company: "Finseal Software Pvt Ltd",
-      duration: "JAN 2025 – Present",
-      highlights: [
-        "Leading frontend development of Sourceware, a full procurement platform covering RFQs, bid analysis, purchase orders, invoices, approval workflows, and catalogs.",
-        "Built a custom drag-and-drop workflow/approval builder using React Flow, enabling non-technical users to design dynamic approval pipelines.",
-        "Developing scalable React + TypeScript components, integrating REST APIs, and managing complex application state with Redux Toolkit and Tanstack Query.",
-        "Enforcing clean architecture, react design patterns, and performance best practices across an enterprise-scale codebase.",
-      ],
-      skills: ["React", "TypeScript", "React Flow", "Tanstack Query", "Redux Toolkit", "Tailwind", "ShadCN", "MUI"],
-      current: true,
-    },
-    {
-      title: "Software Developer — Frontend",
-      company: "Actify Inc.",
-      duration: "MAR 2024 – DEC 2024",
-      highlights: [
-        "Architected and delivered 6+ B2B platforms: HRMS, CRM, Vendor Portal, LMS, Approval System, and Shipping Management.",
-        "Built reusable React + TypeScript component libraries and integrated APIs for seamless data flow across all platforms.",
-        "Implemented dashboards, approval flows, and reporting modules that streamlined enterprise operations for clients.",
-      ],
-      skills: ["React", "TypeScript", "ShadCN", "Tailwind", "Redux Toolkit", "Tanstack Table"],
-      current: false,
-    },
-    {
-      title: "Fullstack Engineer Intern",
-      company: "Genex Co. Services",
-      duration: "JAN 2024 – MAR 2024",
-      highlights: [
-        "Built and customised a full e-commerce storefront using Medusa.js and React, covering wishlist, cart, and order pages from Figma designs.",
-        "Integrated product, cart, and order management APIs; implemented Stripe payment flow.",
-        "Collaborated with the backend team on Node.js integrations, ensuring responsive and scalable UI delivery.",
-      ],
-      skills: ["Next.js", "TypeScript", "Medusa.js", "Node.js", "Stripe", "Figma"],
-      current: false,
-    },
-  ];
-
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-2">
-        <div className="text-center mb-16 animate-on-scroll opacity-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">Work</span>{" "}
-            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-              Experience
-            </span>
-          </h2>
-          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
-            My professional journey and the impact I've made along the way
-          </p>
-        </div>
+    <section id="experience" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <SectionHeading
+          index="01"
+          label="Experience"
+          title="Shipping enterprise frontends since 2024."
+          description="Procurement, HR, CRM, learning and vendor platforms used by business teams every day."
+        />
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-2 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary-500 to-accent-500 transform md:-translate-x-1/2" />
+        <TracingBeam>
+          <ol className="space-y-14">
+            {experience.map((job, index) => (
+              <li key={job.company} className="relative pl-10 md:pl-14">
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-0 top-1.5 grid size-3.75 place-items-center rounded-full border md:size-5.75 ${
+                    job.current ? "border-brand-400 bg-brand-400/15" : "border-zinc-700 bg-zinc-950"
+                  }`}
+                >
+                  <span className={`size-1.5 rounded-full md:size-2 ${job.current ? "bg-brand-400" : "bg-zinc-600"}`} />
+                </span>
 
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className={`animate-on-scroll opacity-0 relative flex items-start ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-[1.1px] md:left-1/2 w-4 h-4 bg-linear-to-r from-primary-500 to-accent-500 rounded-full transform md:-translate-x-1/2 z-10 mt-10">
-                  {exp.current && (
-                    <div className="absolute inset-0 bg-linear-to-r from-primary-500 to-accent-500 rounded-full animate-ping" />
-                  )}
-                </div>
-
-                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} ml-5 md:ml-0`}>
-                  <div className="group p-4 sm:p-8 bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-1">{exp.title}</h3>
-                        <p className="text-primary-400 font-medium">{exp.company}</p>
-                      </div>
-                      <div className="flex items-center gap-2 mt-2 md:mt-0">
-                        {exp.current && (
-                          <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Current</span>
-                        )}
-                        <span className="text-accent-400 text-sm font-medium">{exp.duration}</span>
-                      </div>
+                <Reveal delay={index * 0.05}>
+                  <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-10">
+                    <div>
+                      <p className="font-mono text-sm text-zinc-500">{job.period}</p>
+                      {job.current && (
+                        <span className="mt-2 inline-block rounded-full bg-brand-400/10 px-2.5 py-0.5 font-mono text-xs text-brand-300">
+                          Current
+                        </span>
+                      )}
                     </div>
 
-                    <ul className="space-y-2 mb-6">
-                      {exp.highlights.map((point, i) => (
-                        <li key={i} className="flex items-start gap-2 text-neutral-300 leading-relaxed text-sm">
-                          <span className="mt-1.5 size-1.5 rounded-full bg-primary-400 shrink-0" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills.map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className="px-3 py-1 bg-primary-500/10 text-primary-400 text-sm rounded-full border border-primary-500/20"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                    <div>
+                      <h3 className="text-xl font-semibold tracking-tight text-zinc-50 md:text-2xl">
+                        {job.role} <span className="text-zinc-500">at</span>{" "}
+                        <span className="text-brand-300">{job.company}</span>
+                      </h3>
+                      <p className="mt-3 text-zinc-300 text-pretty">{job.summary}</p>
+                      <ul className="mt-5 space-y-3">
+                        {job.highlights.map((point) => (
+                          <li key={point} className="flex gap-3 text-[15px] leading-relaxed text-zinc-400">
+                            <span aria-hidden="true" className="mt-2.5 h-px w-3 shrink-0 bg-brand-400/70" />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                      <ul aria-label="Tech stack" className="mt-6 flex flex-wrap gap-2">
+                        {job.stack.map((tech) => (
+                          <li
+                            key={tech}
+                            className="rounded-md border border-zinc-800 bg-zinc-900/70 px-2.5 py-1 font-mono text-xs text-zinc-400"
+                          >
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Reveal>
+              </li>
             ))}
-          </div>
-        </div>
+          </ol>
+        </TracingBeam>
+
+        <Reveal>
+          <p className="mt-14 flex items-center gap-2 pl-10 text-sm text-zinc-500 md:pl-14">
+            <Lock className="size-3.5" />
+            Client and employer work is under NDA, so no screenshots here. Happy to walk through it in an interview.
+          </p>
+        </Reveal>
       </div>
     </section>
-  );
+  )
 }

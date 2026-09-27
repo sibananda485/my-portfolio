@@ -1,179 +1,97 @@
-import Image from "next/image";
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
+import { Github } from "@/components/brand-icons"
+import Reveal from "@/components/ui/reveal"
+import SectionHeading from "@/components/ui/section-heading"
+import TiltCard from "@/components/ui/tilt-card"
+import { projects } from "@/lib/data"
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "EntryEdge — Job Board Platform",
-      description:
-        "Full-stack job board with job listings, advanced search filters, candidate profiles, resume uploads, job comparison, and a complete recruiter dashboard. Features real-time chat and notifications via Socket.IO, with a modular architecture using Prisma ORM, React Hook Form, and Zod for robust data handling.",
-      image: "/entryedge.png",
-      techStack: [
-        "React",
-        "TypeScript",
-        "ShadCN",
-        "Redux Toolkit",
-        "Express",
-        "PostgreSQL",
-        "Prisma ORM",
-        "Socket.io",
-        "AWS S3",
-        "Zod",
-      ],
-      liveDemo: "https://entryedge.vercel.app/",
-      github: "https://github.com/sibananda485/entryedge.git",
-      featured: true,
-    },
-    {
-      title: "TailShop — E-commerce Platform",
-      description:
-        "Feature-rich e-commerce storefront with product catalog, shopping cart, user authentication, order management, and an admin dashboard for inventory and user management. Built with a clean component architecture and integrated REST APIs for seamless data flow.",
-      image: "/tailshop.png",
-      techStack: [
-        "React",
-        "JavaScript",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "Node.js",
-        "Express",
-        "MongoDB",
-      ],
-      liveDemo: "https://tailshop-ruby.vercel.app/",
-      github: "https://github.com/sibananda485/Ecommerce-Tailshop.git",
-      featured: true,
-    },
-  ];
-
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-2">
-        <div className="text-center mb-16 animate-on-scroll opacity-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">Featured</span>{" "}
-            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-              Projects
-            </span>
-          </h2>
-          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
-            A showcase of my recent work and the technologies I've used to build
-            them
-          </p>
-        </div>
+    <section id="projects" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <SectionHeading
+          index="03"
+          label="Projects"
+          title="Side projects, built end to end."
+          description="Full-stack apps I designed, built and deployed on my own: frontend, API, database and cloud storage."
+        />
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="space-y-24 md:space-y-32">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="animate-on-scroll opacity-0 group relative bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl overflow-hidden hover:border-neutral-700 transition-all duration-500 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              {project.featured && (
-                <div className="absolute top-4 left-4 z-20">
-                  <span className="px-3 py-1 bg-linear-to-r from-primary-500 to-accent-500 text-white text-xs font-medium rounded-full">
-                    Featured
-                  </span>
-                </div>
-              )}
+            <article key={project.title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <Reveal className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <TiltCard className="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl shadow-black/40">
+                  <div className="flex items-center gap-1.5 border-b border-zinc-800 px-4 py-2.5">
+                    <span className="size-2.5 rounded-full bg-zinc-700" />
+                    <span className="size-2.5 rounded-full bg-zinc-700" />
+                    <span className="size-2.5 rounded-full bg-zinc-700" />
+                    <span className="ml-3 truncate rounded-md bg-zinc-800/70 px-3 py-0.5 font-mono text-[11px] text-zinc-500">
+                      {project.live.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                    </span>
+                  </div>
+                  <div className="relative aspect-video">
+                    <Image
+                      src={project.image}
+                      alt={`Screenshot of ${project.title}`}
+                      fill
+                      sizes="(min-width: 1024px) 560px, 95vw"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                </TiltCard>
+              </Reveal>
 
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-transparent to-transparent" />
-              </div>
+              <Reveal delay={0.1}>
+                <p className="eyebrow">{project.kind}</p>
+                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-50 md:text-4xl">{project.title}</h3>
+                <p className="mt-4 text-lg leading-relaxed text-zinc-400 text-pretty">{project.description}</p>
 
-              <div className="p-8">
-                <h3 className="text-2xl font-semibold text-white mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-neutral-300 leading-relaxed mb-6">
-                  {project.description}
-                </p>
+                <ul className="mt-6 space-y-2.5">
+                  {project.highlights.map((point) => (
+                    <li key={point} className="flex gap-3 text-zinc-300">
+                      <span aria-hidden="true" className="mt-2.5 h-px w-3 shrink-0 bg-brand-400/70" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-neutral-800 text-neutral-300 text-sm rounded-full hover:bg-neutral-700 transition-colors duration-200"
+                <ul aria-label="Tech stack" className="mt-6 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-md border border-zinc-800 bg-zinc-900/70 px-2.5 py-1 font-mono text-xs text-zinc-400"
                     >
                       {tech}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <div className="space-y-4 sm:space-y-0 sm:flex gap-4">
-                  {project.liveDemo ? (
-                    <a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-primary-500 to-accent-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
-                    >
-                      <div className="mx-auto flex items-center gap-1 text-center">
-                        <span>Live Demo</span>
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
-                        </svg>
-                      </div>
-                    </a>
-                  ) : (
-                    <div className="items-center gap-1 text-center">
-                      <span className=" flex items-center gap-2 px-6 py-3 bg-neutral-800 text-neutral-500 font-medium rounded-full cursor-not-allowed">
-                        <div className="flex items-center gap-1 justify-center mx-auto">
-                          <span>Live Demo</span>
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
-                        </div>
-                      </span>
-                    </div>
-                  )}
-
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 rounded-xl bg-brand-400 px-4 py-2.5 text-sm font-medium text-zinc-950 transition-colors hover:bg-brand-300"
+                  >
+                    Live demo
+                    <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 border-2 border-neutral-700 text-white font-medium rounded-full hover:border-primary-500 hover:text-primary-400 transition-all duration-300"
+                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:border-zinc-500"
                   >
-                    <div className="mx-auto flex items-center gap-1 text-center">
-                      <span>GitHub</span>
-                      <svg
-                        className="w-4 h-4"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                    </div>
+                    <Github className="size-4" />
+                    Source
                   </a>
                 </div>
-              </div>
-            </div>
+              </Reveal>
+            </article>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }

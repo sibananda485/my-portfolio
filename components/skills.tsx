@@ -1,82 +1,112 @@
+import Reveal from "@/components/ui/reveal"
+import SectionHeading from "@/components/ui/section-heading"
+import SpotlightCard from "@/components/ui/spotlight-card"
+import TechIcon from "@/components/ui/tech-icon"
+import { figures, formatFigure, skills, type Tech } from "@/lib/data"
+
+function TechList({ items }: { items: Tech[] }) {
+  return (
+    <ul className="flex flex-wrap gap-2">
+      {items.map((tech) => (
+        <li
+          key={tech.name}
+          className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950/60 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
+        >
+          <TechIcon tech={tech} className="size-4 text-zinc-400" />
+          {tech.name}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      icon: "⚛️",
-      skills: [
-        "TypeScript",
-        "JavaScript",
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-        "ShadCN",
-        "Redux Toolkit",
-        "React Flow",
-        "Tanstack Query",
-      ],
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Backend Development",
-      icon: "🗄️",
-      skills: ["Node.js", "Express.js", "REST APIs", "WebSocket", "MongoDB", "PostgreSQL", "Prisma ORM", "Zod"],
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      title: "Cloud & DevOps",
-      icon: "☁️",
-      skills: ["Git", "GitHub", "AWS IAM", "AWS EC2", "AWS S3"],
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Tools & Practices",
-      icon: "🛠️",
-      skills: ["React Hook Form", "Figma", "Stripe", "Medusa.js", "React Design Patterns", "Modular Architecture"],
-      color: "from-orange-500 to-yellow-500",
-    },
-  ]
+  const marquee = [...skills.core, ...skills.backend, ...skills.tooling, ...skills.testing].filter((tech) => tech.icon)
 
   return (
-    <section id="skills" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-2">
-        <div className="text-center mb-16 animate-on-scroll opacity-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">Technical</span>{" "}
-            <span className="bg-linear-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-              Skills
-            </span>
-          </h2>
-          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
-            Here are the technologies and tools I work with to bring ideas to life
-          </p>
+    <section id="skills" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <SectionHeading
+          index="04"
+          label="Skills"
+          title="A frontend specialist who can work across the whole stack."
+        />
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <Reveal className="md:col-span-2 md:row-span-2">
+            <SpotlightCard className="flex h-full flex-col p-6 md:p-8">
+              <h3 className="text-lg font-semibold text-zinc-50">Core: what I use every day</h3>
+              <p className="mt-2 mb-8 text-sm text-zinc-500">The stack behind every production app I&apos;ve shipped.</p>
+              <ul className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {skills.core.map((tech) => (
+                  <li
+                    key={tech.name}
+                    className="group flex flex-col items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-950/60 px-2 py-5 text-center transition-colors hover:border-brand-400/40"
+                  >
+                    <TechIcon
+                      tech={tech}
+                      className="size-7 text-zinc-400 transition-colors duration-300 group-hover:text-brand-300"
+                    />
+                    <span className="text-xs text-zinc-300">{tech.name}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-auto border-t border-zinc-800 pt-5 text-sm text-zinc-400">
+                Plus modern JavaScript, semantic HTML and CSS, responsive layouts and accessible UI, used daily at
+                Finseal and Actify across <span className="text-zinc-200">{formatFigure(figures.platforms)} production platforms</span>.
+              </p>
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={0.05}>
+            <SpotlightCard className="h-full p-6">
+              <h3 className="mb-5 font-semibold text-zinc-50">Backend & data</h3>
+              <TechList items={skills.backend} />
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <SpotlightCard className="h-full p-6">
+              <h3 className="mb-5 font-semibold text-zinc-50">Cloud & tooling</h3>
+              <TechList items={skills.tooling} />
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <SpotlightCard className="h-full p-6">
+              <h3 className="mb-5 font-semibold text-zinc-50">Testing</h3>
+              <TechList items={skills.testing} />
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={0.2} className="md:col-span-2">
+            <SpotlightCard className="h-full p-6">
+              <h3 className="mb-5 font-semibold text-zinc-50">How I build</h3>
+              <ul className="flex flex-wrap gap-2">
+                {skills.practices.map((practice) => (
+                  <li
+                    key={practice}
+                    className="rounded-full border border-brand-400/20 bg-brand-400/5 px-3.5 py-1.5 text-sm text-brand-200"
+                  >
+                    {practice}
+                  </li>
+                ))}
+              </ul>
+            </SpotlightCard>
+          </Reveal>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="animate-on-scroll opacity-0 group relative p-8 bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div
-                className={`absolute inset-0 bg-linear-to-br ${category.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}
-              />
-
-              <div className="relative z-10">
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-4">{category.title}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-3 py-1 bg-neutral-800 text-neutral-300 text-sm rounded-full hover:bg-neutral-700 transition-colors duration-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+      <div
+        aria-hidden="true"
+        className="no-print mt-16 overflow-hidden mask-[linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+      >
+        <div className="flex w-max animate-marquee gap-12 pr-12 hover:[animation-play-state:paused]">
+          {[...marquee, ...marquee].map((tech, i) => (
+            <span key={i} className="flex items-center gap-3 text-zinc-600">
+              <TechIcon tech={tech} className="size-6" />
+              <span className="text-lg font-medium">{tech.name}</span>
+            </span>
           ))}
         </div>
       </div>
