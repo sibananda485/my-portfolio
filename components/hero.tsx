@@ -87,7 +87,7 @@ export default function Hero({ resumeUrl }: { resumeUrl?: string }) {
         <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
           <div className="relative aspect-4/5 overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900">
             <Image
-              src="/myImage.jpg"
+              src="/myImage.webp"
               alt={`Portrait of ${profile.name}`}
               fill
               loading="eager"

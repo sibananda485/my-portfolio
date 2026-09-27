@@ -57,7 +57,7 @@ const jsonLd = {
   jobTitle: profile.role,
   url: SITE_URL,
   email: `mailto:${profile.email}`,
-  image: `${SITE_URL}/myImage.jpg`,
+  image: `${SITE_URL}/myImage.webp`,
   address: { "@type": "PostalAddress", addressLocality: "Mumbai", addressCountry: "IN" },
   sameAs: [profile.github, profile.linkedin],
   knowsAbout: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux Toolkit", "TanStack Query", "React Flow", "Node.js"],
