@@ -1,50 +1,50 @@
-import Navigation from "@/components/navigation"
-import Hero from "@/components/hero"
 import About from "@/components/about"
-import Skills from "@/components/skills"
+import Background from "@/components/background"
+import Contact from "@/components/contact"
 import Experience from "@/components/experience"
+import Footer from "@/components/footer"
+import Hero from "@/components/hero"
+import Navigation from "@/components/navigation"
 import OpenSource from "@/components/opensource"
 import Projects from "@/components/projects"
-import Contact from "@/components/contact"
-import Footer from "@/components/footer"
+import RecruiterBrief from "@/components/recruiter-brief"
 import ScrollProgress from "@/components/scroll-progress"
-import ScrollAnimations from "@/components/scroll-animations"
+import Skills from "@/components/skills"
+import type { RecruiterInfo } from "@/lib/recruiter"
 
 // The whole site. Rendered by both `/` and `/recruiter`; only /recruiter
-// passes a resumeUrl.
-export default function Portfolio({ resumeUrl }: { resumeUrl?: string }) {
+// passes `recruiter` (the resume URL).
+export default function Portfolio({ recruiter }: { recruiter?: RecruiterInfo }) {
   return (
-    <main className="bg-neutral-950 text-white overflow-x-hidden">
-      {/* Without JavaScript the scroll observer never runs, so show everything */}
+    <>
+      {/* Without JavaScript the reveal animations never run, so show everything */}
       <noscript>
-        <style>{`.animate-on-scroll { opacity: 1 !important; transform: none !important; }`}</style>
+        <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
       </noscript>
 
-      {/* Background Elements */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-linear-to-br from-neutral-950 via-neutral-900 to-neutral-950" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "3s" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-primary-400/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1.5s" }}
-        />
-      </div>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-60 focus:rounded-lg focus:bg-brand-400 focus:px-4 focus:py-2 focus:text-zinc-950"
+      >
+        Skip to content
+      </a>
 
+      <Background />
       <ScrollProgress />
-      <Navigation />
-      <Hero resumeUrl={resumeUrl} />
-      <About />
-      <Skills />
-      <Experience />
-      <OpenSource />
-      <Projects />
-      <Contact resumeUrl={resumeUrl} />
+      <Navigation resumeUrl={recruiter?.resumeUrl} />
+
+      <main id="main" tabIndex={-1} className="overflow-x-clip outline-none">
+        <Hero resumeUrl={recruiter?.resumeUrl} />
+        {recruiter && <RecruiterBrief recruiter={recruiter} />}
+        <Experience />
+        <OpenSource />
+        <Projects />
+        <Skills />
+        <About />
+        <Contact recruiter={recruiter} />
+      </main>
+
       <Footer />
-      <ScrollAnimations />
-    </main>
+    </>
   )
 }

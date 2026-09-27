@@ -1,141 +1,134 @@
 @import 'tailwindcss';
 
-@source '../*.{js,ts,jsx,tsx,mdx}';
+/* Fonts come from next/font variables set on <html> in app/layout.tsx */
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
 
 @theme {
-  --color-primary-50: #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-200: #bae6fd;
-  --color-primary-300: #7dd3fc;
-  --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-primary-700: #0369a1;
-  --color-primary-800: #075985;
-  --color-primary-900: #0c4a6e;
+  /* One accent colour. To re-theme the whole site, change this scale. */
+  --color-brand-100: #f4fdd0;
+  --color-brand-200: #e8fb9f;
+  --color-brand-300: #d8f866;
+  --color-brand-400: #c6f432;
+  --color-brand-500: #aee01e;
+  --color-brand-600: #87b20f;
+  --color-brand-700: #658510;
+  --color-brand-800: #4f6912;
+  --color-brand-900: #435814;
 
-  --color-accent-50: #fdf4ff;
-  --color-accent-100: #fae8ff;
-  --color-accent-200: #f5d0fe;
-  --color-accent-300: #f0abfc;
-  --color-accent-400: #e879f9;
-  --color-accent-500: #d946ef;
-  --color-accent-600: #c026d3;
-  --color-accent-700: #a21caf;
-  --color-accent-800: #86198f;
-  --color-accent-900: #701a75;
+  --color-canvas: #09090b;
 
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
-  --color-neutral-950: #0a0a0a;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-ring: pulseRing 2s ease-out infinite;
+  --animate-shine: shine 6s linear infinite;
+  --animate-caret: caret 1s step-end infinite;
 
-  --font-sans: Inter, system-ui, sans-serif;
-
-  --animate-fade-in: fadeIn 0.6s ease-out forwards;
-  --animate-slide-up: slideUp 0.6s ease-out forwards;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-gradient: gradient 8s ease infinite;
-
-  @keyframes fadeIn {
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes pulseRing {
     0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(2.6);
       opacity: 0;
     }
-    100% {
-      opacity: 1;
+  }
+  @keyframes shine {
+    to {
+      background-position: 200% center;
     }
   }
-  @keyframes slideUp {
-    0% {
+  @keyframes caret {
+    50% {
       opacity: 0;
-      transform: translateY(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-  @keyframes gradient {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
     }
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-zinc-800, currentcolor);
   }
-}
 
-@utility animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
-
-  &.animate-fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@utility animate-fade-in {
-  &.animate-on-scroll {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
-  /* Keep anchored section headings clear of the fixed navigation bar */
+  /* Keep anchored section headings clear of the floating navigation */
   section[id] {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 5rem;
   }
 
   body {
     line-height: 1.6;
-    color: white;
-    background: var(--color-neutral-950);
+    color: var(--color-zinc-100);
+    background: var(--color-canvas);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Section eyebrow label, e.g. "01 / Experience" */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand-400);
+}
+
+/* Border that glows where the pointer is; --x/--y are set by SpotlightCard */
+@utility spotlight-card {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(
+        420px circle at var(--x, 50%) var(--y, -100%),
+        color-mix(in oklab, var(--color-brand-400) 9%, transparent),
+        transparent 45%
+      )
+      padding-box,
+    linear-gradient(var(--color-zinc-900), var(--color-zinc-900)) padding-box,
+    radial-gradient(
+        320px circle at var(--x, 50%) var(--y, -100%),
+        color-mix(in oklab, var(--color-brand-400) 70%, transparent),
+        var(--color-zinc-800) 60%
+      )
+      border-box;
+  border: 1px solid transparent;
+}
+
+/* Animated sheen used on a single piece of text */
+@utility text-shine {
+  background: linear-gradient(
+    110deg,
+    var(--color-zinc-100) 35%,
+    var(--color-brand-300) 50%,
+    var(--color-zinc-100) 65%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shine);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -150,32 +143,59 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
 
-  .animate-on-scroll {
+/* Printing the page gives a clean, ink-friendly one-pager */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .reveal {
     opacity: 1 !important;
     transform: none !important;
   }
+
+  section {
+    break-inside: avoid-page;
+    padding-block: 1rem !important;
+  }
+
+  * {
+    color: black !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-color: #ccc !important;
+  }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-neutral-900);
+  background: var(--color-canvas);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--color-primary-500), var(--color-accent-500));
+  background: var(--color-zinc-800);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, var(--color-primary-600), var(--color-accent-600));
+  background: var(--color-zinc-700);
 }
 
 ::selection {
-  background: var(--color-primary-500);
-  color: white;
+  background: var(--color-brand-400);
+  color: var(--color-zinc-950);
 }

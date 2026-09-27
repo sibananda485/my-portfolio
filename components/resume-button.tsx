@@ -1,39 +1,30 @@
-"use client";
+import type { ReactNode } from "react"
+import { profile } from "@/lib/data"
 
-import type { ReactNode } from "react";
+const requestHref = `mailto:${profile.email}?subject=${encodeURIComponent("Resume request")}`
 
-// Without a resumeUrl (every page except /recruiter) no link is rendered at
-// all, so the PDF location is not exposed in the page.
+// Without a resumeUrl (every page except /recruiter) the PDF location is never
+// rendered; the button opens a pre-filled "Resume request" email instead.
 export default function ResumeButton({
   resumeUrl,
   className,
   children,
 }: {
-  resumeUrl?: string;
-  className?: string;
-  children: ReactNode;
+  resumeUrl?: string
+  className?: string
+  children: ReactNode
 }) {
   if (!resumeUrl) {
     return (
-      <button
-        type="button"
-        onClick={() => alert("INFO : Only recruiters can access resume")}
-        className={`cursor-pointer ${className ?? ""}`}
-      >
+      <a href={requestHref} title="Email me to request my resume" className={className}>
         {children}
-      </button>
-    );
+      </a>
+    )
   }
 
   return (
-    <a
-      href={resumeUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      download
-      className={className}
-    >
+    <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className={className}>
       {children}
     </a>
-  );
+  )
 }
