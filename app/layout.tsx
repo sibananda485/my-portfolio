@@ -42,7 +42,6 @@ export const metadata: Metadata = {
     locale: "en_IN",
   },
   twitter: { card: "summary_large_image", title, description },
-  icons: { icon: "/favicon.svg" },
 }
 
 export const viewport: Viewport = {
